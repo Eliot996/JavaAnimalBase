@@ -35,7 +35,7 @@ public class AnimalBase {
         switch (sort) {
             case "name" -> animals.sort((Animal::compareByName));
             case "type" -> animals.sort((Animal::compareBytype));
-            case "age" -> animals.sort((Animal::compareByAge));
+            case "age"  -> animals.sort((Animal::compareByAge));
         }
         System.out.println("TODO: Sort the list of animals by: " + sort);
     }
