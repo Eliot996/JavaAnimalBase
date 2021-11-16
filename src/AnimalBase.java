@@ -1,10 +1,9 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class AnimalBase {
 
     private ArrayList<Animal> animals;
-    private String sortDirection;
+    private String sortDirection = "ASC";
 
     public AnimalBase() {
         animals = new ArrayList<>();
@@ -33,7 +32,7 @@ public class AnimalBase {
 
     public void sortBy(String sort, String direction) {
 
-        if (direction.equals("Toogle")){
+        if (direction.equals("TOGGLE")){
             sortDirection = sortDirection.equals("ASC") ? "DESC" : "ASC";
         } else {
             sortDirection = direction;
