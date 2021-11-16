@@ -2,16 +2,11 @@ import java.util.Comparator;
 
 public class AnimalComparator  implements Comparator<Animal> {
 
-    private final String direction;
-    private final String sortBy;
-
-    public AnimalComparator(String sortBy, String direction) {
-        this.sortBy = sortBy;
-        this.direction = direction;
-    }
+    private String direction;
+    private String sortBy;
 
     @Override
-        public int compare(Animal o1, Animal o2) {
+    public int compare(Animal o1, Animal o2) {
 
         // depending on the sortBy category, assign proper result to result
         int result = switch (sortBy) {
@@ -27,5 +22,22 @@ public class AnimalComparator  implements Comparator<Animal> {
         }
 
         return result;
+    }
+
+    public void setDirection(String direction) {
+
+        if (direction.equals("TOGGLE")){
+            this.direction = direction.equals("ASC") ? "DESC" : "ASC";
+        } else {
+            this.direction = direction;
+        }
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public void hallo(String s){
+        System.out.println(s);
     }
 }

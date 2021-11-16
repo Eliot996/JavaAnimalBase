@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class AnimalBase {
 
     private ArrayList<Animal> animals;
-    private String sortDirection = "ASC";
+    AnimalComparator comparator = new AnimalComparator();
 
     public AnimalBase() {
         animals = new ArrayList<>();
@@ -32,25 +32,10 @@ public class AnimalBase {
 
     public void sortBy(String sort, String direction) {
 
-        if (direction.equals("TOGGLE")){
-            sortDirection = sortDirection.equals("ASC") ? "DESC" : "ASC";
-        } else {
-            sortDirection = direction;
-        }
+        comparator.setDirection(direction);
+        comparator.setSortBy(sort);
 
-        animals.sort(new AnimalComparator(sort, sortDirection));
-
-        /*switch (sort) {
-            case "name" -> Collections.sort(animals, new NameComparator());
-            case "type" -> Collections.sort(animals, new TypeComparator());
-            case "age"  -> Collections.sort(animals, new AgeComparator());
-        }*/
-
-        /*switch (sort) {
-            case "name" -> animals.sort((Animal::compareByName));
-            case "type" -> animals.sort((Animal::compareBytype));
-            case "age"  -> animals.sort((Animal::compareByAge));
-        }*/
+        animals.sort(comparator);
 
         System.out.println("TODO: Sort the list of animals by: " + sort);
     }
