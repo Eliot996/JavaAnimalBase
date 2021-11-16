@@ -1,4 +1,4 @@
-public class Animal {
+public class Animal implements Comparable {
     private String name;
     private String desc;
     private String type;
@@ -21,5 +21,24 @@ public class Animal {
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        Animal otheranimal = (Animal) o;
+        return this.name.compareToIgnoreCase(otheranimal.name);
+    }
 
+    public int compareByName(Object o) {
+        Animal otheranimal = (Animal) o;
+        return this.name.compareToIgnoreCase(otheranimal.name);
+    }
+
+    public int compareBytype(Object o) {
+        Animal otheranimal = (Animal) o;
+        return this.type.compareToIgnoreCase(otheranimal.type);
+    }
+
+    public int compareByAge(Object o) {
+        Animal otheranimal = (Animal) o;
+        return this.age - otheranimal.age;
+    }
 }

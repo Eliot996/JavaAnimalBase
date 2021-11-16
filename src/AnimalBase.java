@@ -10,6 +10,13 @@ public class AnimalBase {
 
     public void start() {
         UserInterface ui = new UserInterface(this);
+
+        // test data - REMOVE LATER!
+        createNewAnimal("d Toothless", "unholy offspring of lightning and death itself", "d night fury", 21);
+        createNewAnimal("a Toothless", "unholy offspring of lightning and death itself", "c night fury", 25);
+        createNewAnimal("b Toothless", "unholy offspring of lightning and death itself", "a night fury", 20);
+        createNewAnimal("c Toothless", "unholy offspring of lightning and death itself", "b night fury", 19);
+
         ui.start();
     }
 
@@ -24,6 +31,12 @@ public class AnimalBase {
 
     public void sortBy(String sort) {
         // TODO: Implement sorting!
+
+        switch (sort) {
+            case "name" -> animals.sort((Animal::compareByName));
+            case "type" -> animals.sort((Animal::compareBytype));
+            case "age" -> animals.sort((Animal::compareByAge));
+        }
         System.out.println("TODO: Sort the list of animals by: " + sort);
     }
 
