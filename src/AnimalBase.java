@@ -4,6 +4,7 @@ import java.util.Collections;
 public class AnimalBase {
 
     private ArrayList<Animal> animals;
+    private String sortDirection;
 
     public AnimalBase() {
         animals = new ArrayList<>();
@@ -30,12 +31,21 @@ public class AnimalBase {
         return animals;
     }
 
-    public void sortBy(String sort) {
-        switch (sort) {
+    public void sortBy(String sort, String direction) {
+
+        if (direction.equals("Toogle")){
+            sortDirection = sortDirection.equals("ASC") ? "DESC" : "ASC";
+        } else {
+            sortDirection = direction;
+        }
+
+        animals.sort(new AnimalComparator(sort, sortDirection));
+
+        /*switch (sort) {
             case "name" -> Collections.sort(animals, new NameComparator());
             case "type" -> Collections.sort(animals, new TypeComparator());
             case "age"  -> Collections.sort(animals, new AgeComparator());
-        }
+        }*/
 
         /*switch (sort) {
             case "name" -> animals.sort((Animal::compareByName));
